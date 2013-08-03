@@ -1,7 +1,9 @@
 
+/*u.js*/
 var u, Util = u = new function() {}
-u.version = 4;
+u.version = 0.4;
 
+/*u-debug.js*/
 Util.testURL = function(url) {
 	return true;
 	return url.match(/http\:\/\/mkn\.|http\:\/\/w\.|\.local/i);
@@ -85,6 +87,7 @@ Util.bug = function(target, message) {
 	}
 }
 
+/*u-url.js*/
 Util.getVar = function(s) {
 	var p = location.search;
 	var start_index = (p.indexOf("&" + s + "=") > -1) ? p.indexOf("&" + s + "=") + s.length + 2 : ((p.indexOf("?" + s + "=") > -1) ? p.indexOf("?" + s + "=") + s.length + 2 : false);
@@ -123,6 +126,7 @@ Util.setHashPath = function(path) {
 	return Util.getHashPath();
 }
 
+/*u-dom.js*/
 Util.ge = function(id, target) {
 	var e, i, regexp, t;
 	t = target ? target : document;
@@ -334,6 +338,7 @@ Util.wrapElement = u.we = function(e, wrap) {
 	return wrap;
 }
 
+/*u-events.js*/
 Util.Events = u.e = new function() {
 	this.event_pref = typeof(document.ontouchmove) == "undefined" ? "mouse" : "touch";
 	this.kill = function(event) {
@@ -789,6 +794,7 @@ Util.Events = u.e = new function() {
 	}
 }
 
+/*u-timer.js*/
 Util.Timer = u.t = new function() {
 	this.actions = new Array();
 	this.objects = new Array();
@@ -817,6 +823,7 @@ Util.Timer = u.t = new function() {
 	}
 }
 
+/*u-position.js*/
 Util.absoluteX = u.absX = function(e) {
 	if(e.offsetParent) {
 		return e.offsetLeft + u.absX(e.offsetParent);
@@ -872,6 +879,7 @@ Util.pageScrollY = u.scrollY = function() {
 	return window.pageYOffset;
 }
 
+/*u-animation.js*/
 Util.Animation = u.a = new function() {
 	this.variant = function(e) {
 		if(this.implementation == undefined) {
@@ -954,6 +962,7 @@ Util.Animation = u.a = new function() {
 	}
 }
 
+/*u-init.js*/
 Util.Objects = u.o = new Array();
 Util.init = function() {
 	var i, e, elements, ij_value;
@@ -969,6 +978,7 @@ Util.init = function() {
 }
 window.onload = u.init;
 
+/*u-ref.js*/
 Util.ref = function(e, classname) {
 	return;
 	if(!u.ge("ref_layover")) {
@@ -995,6 +1005,7 @@ Util.ref = function(e, classname) {
 	}
 }
 
+/*i-swipe.js*/
 Util.Objects["swipe"] = new function() {
 	this.init = function(e) {
 		var i, slide;
@@ -1028,6 +1039,7 @@ Util.Objects["swipe"] = new function() {
 	}
 }
 
+/*i-header.js*/
 Util.Objects["header"] = new function() {
 	this.init = function(e) {
 		var list = u.ge("ul", e);
@@ -1097,6 +1109,7 @@ Util.Objects["header"] = new function() {
 	}
 }
 
+/*i-footer.js*/
 Util.Objects["footer"] = new function() {
 	this.init = function(e) {
 		e.clicked = function() {
@@ -1135,10 +1148,12 @@ Util.Objects["footer"] = new function() {
 	}
 }
 
+/*no_monitor_alerts.js*/
 if(typeof(submitSlideEnter) != "function") {
 	submitSlideEnter = submitCustomEvent = function() {}
 }
 
+/*i-content.js*/
 if(typeof(submitSlideEnter) != "function") {
 	submitSlideEnter = submitCustomEvent = function() {}
 }
@@ -1216,6 +1231,7 @@ Util.saveCustomEvent = function() {
 	}
 }
 
+/*i-slides.js*/
 Util.Objects["slide"] = new function() {
 	this.init = function(e) {
 		u.addClass(e, "ready");
@@ -1587,6 +1603,7 @@ Util.Objects["slide10"] = new function() {
 		u.ge("content").ready();
 	}
 }
+/*i-desktop.js*/
 Util.Objects["validdevice"] = new function() {
 	this.init = function(e) {
 		var wrapper = document.createElement("div");
@@ -1611,6 +1628,7 @@ Util.Objects["validdevice"] = new function() {
 	}
 }
 
+/*u-cookie.js*/
 Util.saveCookie = function(name, value) {
 	document.cookie = name + "=" + value +";"
 }
